@@ -1,0 +1,7 @@
+<%= simple_form_for [event, order] do |f| %>
+  <%= f.input :quantity, input_html: { value: 1, max: event.quantity } %>
+  <%= f.input :total_price, input_html: { value: event.ticket_price } %>
+  <%= f.input :shipping_address %>
+  <%= f.input :status %>
+  <%= f.button :submit %>
+<% end %>
