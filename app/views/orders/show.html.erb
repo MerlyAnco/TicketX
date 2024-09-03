@@ -1,2 +1,13 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+  <%= link_to event_orders_path, :class => "btn btn-dark rounded" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <h1>Order</h1>
+  <div class="card">
+    <%= @order.event.name %>
+    <p><%= @order.status %></p>
+    <p><%= @order.quantity %></p>
+    <p><%= @order.total_price %></p>
+  </div>
+  <p>Find me in app/views/orders/show.html.erb</p>
+</div>
