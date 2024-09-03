@@ -30,8 +30,8 @@ class EventsController < ApplicationController
     redirect_to events_path, status: :see_other
   end
 
-  def my_event
-    @event = Event.find_by()
+  def my_events
+    @my_events = current_user.events
   end
 
   def sells
