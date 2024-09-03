@@ -1,2 +1,20 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container">
+  <h1>Events#show</h1>
+
+    <h1><%= @event.name %></h1>
+    <p><%= @event.description %></p>
+    <p><%= @event.date %></p>
+    <p><%= @event.location %></p>
+    <p><%= @event.quantity %></p>
+    <p><%= @event.ticket_price %></p>
+    <br>
+    <% if @event.photo.attached? %>
+      <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= image_tag "sinimagen.jpg", height: 300, width: 400 %>
+    <% end %>
+    <br>
+    <%= link_to "Ver lista", events_path %>
+    <%= link_to "Editar", edit_event_path %>
+
+</div>

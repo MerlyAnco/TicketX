@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
-    redirect_to events_path
+    redirect_to event_path(@event)
   end
 
   def destroy
