@@ -34,10 +34,13 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @my_events = current_user.events
+    @my_events = Order.all.map(&:event).select { |event| event.user_id == current_user.id }
   end
 
   def sells
+    # @events = Order.where(status: "vendido").map(&:event).select { |event| event.user_id == current_user.id }
+    id_buyers = Order.where(status: "vendido").map(&:user_id)
+    @events = User.where(id: id_buyers)
   end
 
   private
