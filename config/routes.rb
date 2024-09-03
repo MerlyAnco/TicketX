@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'orders/index'
-  get 'orders/new'
-  get 'orders/show'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,6 +12,6 @@ Rails.application.routes.draw do
   get 'events/sells', to: 'events#sells'
   get "events/my_events", to: "events#my_events", as: :my_events
   resources :events do
-    resources :orders, only: [:new, :create]
+    resources :orders, only: %i[new create]
   end
 end
