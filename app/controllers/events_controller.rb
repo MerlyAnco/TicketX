@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+
   def index
     @events = Event.all
   end
@@ -13,6 +15,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     @event.save
     redirect_to events_path
   end
