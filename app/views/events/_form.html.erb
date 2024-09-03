@@ -1,0 +1,16 @@
+<%= simple_form_for(@event) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :date %>
+    <%= f.input :location %>
+    <%= f.input :quantity %>
+    <%= f.input :ticket_price %>
+    <%= f.input :photo, as: :file %>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary" %>
+      <%= link_to 'Volver a ver eventos', events_path, class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
