@@ -38,6 +38,7 @@ class EventsController < ApplicationController
   end
 
   def sells
+    @events = current_user.orders.where(status: "vendido")
   end
 
   private
