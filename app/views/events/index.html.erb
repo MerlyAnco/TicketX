@@ -1,2 +1,22 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="container">
+  <h1>Events#index</h1>
+  <%# <%= link_to "Editar", event_path(event) %>
+  <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+    <% @events.each do |event| %>
+      <div>
+        <h1><%= event.name %></h1>
+        <p><%= event.date %></p>
+        <p><%= event.ticket_price %></p>
+        <br>
+        <% if event.photo.attached? %>
+          <%= cl_image_tag event.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <%= image_tag "sinimagen.jpg", height: 300, width: 400 %>
+        <% end %>
+        <br>
+        <%= link_to "Comprar", event_path(event) %>
+        <%= link_to "delete", event_path(event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </div>
+    <% end %>
+  </div>
+</div>
