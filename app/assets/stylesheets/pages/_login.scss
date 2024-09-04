@@ -1,0 +1,23 @@
+#login,
+#register{
+  &.container {
+    max-width: 100%;
+  }
+
+  .image-background {
+    height: calc(100vh - 66px);
+    background-image:  asset-url("fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .card {
+    border-radius: 0;
+  }
+
+  .form {
+    max-width: 556px;
+    margin: auto;
+  }
+}
