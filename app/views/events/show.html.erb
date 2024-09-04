@@ -1,20 +1,150 @@
-<div class="container">
-  <h1>Events#show</h1>
+<div class="container py-3" style="position:relative">
+  <div class="row">
 
-    <h1><%= @event.name %></h1>
-    <p><%= @event.description %></p>
-    <p><%= @event.date %></p>
-    <p><%= @event.location %></p>
-    <p><%= @event.quantity %></p>
+    <div class="col-12 col-md-6 col-lg-7">
+      <div class="image-container mb-3">
+        <% if @event.photo.attached? %>
+          <%= cl_image_tag @event.photo.key, class: "event-image" %>
+        <% else %>
+          <%= image_tag "sinimagen.jpg", class: "event-image" %>
+        <% end %>
+      </div>
+      <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+          <div class="row justify-content-between">
+            <div class="col"></div>
+            <div class="col-12 col-md-auto">
+              <div class="d-flex align-items-center justify-content-end mb-3">
+                <b>Compártelo:</b>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.joinnus.com/events/concerts/lima-aeropajitas-30-anos-63736" target="facebook" class="ms-3"><img src="https://cdn.joinnus.com/files/logo-facebook-v3.svg" alt="" height="25"></a>
+                <span class="ms-3 c-pointer"><img src="https://cdn.joinnus.com/files/logo-twitter-v3.svg" alt="" height="25"></span>
+                <a href="whatsapp://send?text=https://www.joinnus.com/events/concerts/lima-aeropajitas-30-anos-63736" target="whatsapp" class="ms-3 d-block d-md-none"><img src="https://cdn.joinnus.com/files/logo-whatsapp-v3.svg" alt="" height="25"></a>
+              </div>
+              <h1 class="h3 card-title"><strong><%= @event.name %></strong></h1>
+              <div class="lead mb-3"><%= @event.description %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-5">
+      <div class="border-0 mb-3 bg-white shadow-sm">
+        <div class="pb-3">
+          <div class="p-3">
+            <div>
+
+              <h5 class="mb-4 text-dark text-capitalize d-none d-md-block fw-bold">
+              <%= @event.name %>
+              </h5>
+
+              <div>
+
+                <div class="row mb-3">
+                  <div class="col-3">
+                    <div class="text-dark">Fecha
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <%= @event.date %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-center">
+                  <div class="col-3">
+                    <div class="text-dark">Horario
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div>04:00 PM a 02:00 AM</div>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <div class="text-dark">Lugar
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <%= @event.location %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-3 pb-3 pt-3">
+                  <h5 class="mb-0">
+                    <b class="text-dark">Entradas</b>
+                  </h5>
+                </div>
+
+                <ul class="list-unstyled m-0 border-form-types">
+                  <li>
+                    <div class="px-3 py-2 mb-2  bg-light">
+                      <div class="row justify-content-between align-items-center">
+
+                        <div class="col-12">
+                          <div class="row">
+
+                            <div class="col-10">
+                              <h6 class="mb-0">
+                                <b>Regular</b>
+                              </h6>
+                            </div>
+
+                            <div class="col-2 text-right">
+                              <h6 class="mb-0"></h6>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                          <div class="row align-items-center">
+
+                            <div class="col text-left">
+                              <div>
+                                <b style="font-size: 14px; font-weight: 700; line-height: normal;">S/ <%= @event.ticket_price %></b>
+                              </div>
+                            </div>
+
+                            <div class="col-auto text-right ">
+                              <div>
+                                <div class="text-nowrap">
+                                  <span class="d-flex align-items-center ">
+                                  <a href="#" class="btn-dark btn-sm opacity-4" style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;">-</a>
+                                  <span class="mx-2 text-dark text-center" style="width: 16px;">0
+                                  </span>
+                                  <a href="#" class="btn-primary btn-sm " style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;">+
+                                  </a>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
     <p><%= @event.ticket_price %></p>
     <br>
-    <% if @event.photo.attached? %>
-      <%= cl_image_tag @event.photo.key, height: 300, width: 400, crop: :fill %>
-    <% else %>
-      <%= image_tag "sinimagen.jpg", height: 300, width: 400 %>
-    <% end %>
-    <br>
-    <%= link_to "Ver lista", events_path %>
-    <%= link_to "Editar", edit_event_path %>
-
-</div>

@@ -1,0 +1,19 @@
+.image-container {
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-dark {
+  color: #1a171b !important
+}
+
+.event-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.card-title {
+  margin-bottom: .75rem
+}
