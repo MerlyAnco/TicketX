@@ -1,5 +1,16 @@
 <div class="container">
-  <h1>Orders#new</h1>
+  <div class="container">
+  <h3>"<%= @event.name %>"</h3>
+  <div>
+    <p>Fecha</p>
+    <p><%= @event.date %></p>
+  </div>
+  <div>
+    <h4>Entradas</h4>
   <%= render 'form', event: @event, order: @order %>
-  <p>Find me in app/views/orders/new.html.erb</p>
+    </div>
+</div>
+<div class="container">
+  <p><strong><%= @event.location %></strong></p>
+</div>
 </div>

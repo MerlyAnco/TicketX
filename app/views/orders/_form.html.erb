@@ -1,7 +1,26 @@
 <%= simple_form_for [event, order] do |f| %>
-  <%= f.input :quantity, input_html: { value: 1, max: event.quantity } %>
-  <%= f.input :total_price, input_html: { value: event.ticket_price } %>
+<div data-controller="form">
+  <div>
+    <h6>Reserva</h6>
+    <p data-form-target = "price"><%= event.ticket_price %></p>
+    <%= f.input :quantity,
+      input_html: {
+        value: 0,
+        max: event.quantity,
+        "data-form-target" => "quantity",
+        "data-action" => "input->form#calculate"
+      } %>
+  </div>
+  <div>
+    <h6>Total</h6>
+    <h6>S/. </h6>
+    <%= f.input :total_price,
+        input_html: { value: 0,
+          "data-form-target" => "totalPrice"
+        } %>
+  </div>
   <%= f.input :shipping_address %>
   <%= f.input :status %>
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Solicitar', class: 'btn-danger text-white rounded-5 w-100' %>
+  </div>
 <% end %>
