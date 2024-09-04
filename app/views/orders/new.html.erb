@@ -1,16 +1,15 @@
 <div class="container">
-  <div class="container">
-  <h3>"<%= @event.name %>"</h3>
-  <div>
-    <p>Fecha</p>
-    <p><%= @event.date %></p>
-  </div>
-  <div>
-    <h4>Entradas</h4>
-  <%= render 'form', event: @event, order: @order %>
+  <div class="container shadow p-3 mb-5 bg-white rounded-2">
+    <h3>"<%= @event.name %>"</h3>
+    <div>
+      <p>Fecha: <span><%= @event.date %></span></p>
     </div>
-</div>
-<div class="container">
-  <p><strong><%= @event.location %></strong></p>
-</div>
+    <div>
+      <h4>Entradas</h4>
+      <%= render 'form', event: @event, order: @order %>
+    </div>
+  </div>
+  <div class="container">
+    <p><strong><%= @event.location %></strong></p>
+  </div>
 </div>
