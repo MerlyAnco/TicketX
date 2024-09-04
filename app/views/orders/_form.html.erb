@@ -9,6 +9,7 @@
       <%= f.input :quantity,
         input_html: {
           value: 0,
+          min: 1,
           max: event.quantity,
           "data-form-target" => "quantity",
           "data-action" => "input->form#calculate"
