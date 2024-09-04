@@ -112,18 +112,15 @@
 
                             <div class="col-auto text-right ">
                               <div>
-                                <div class="text-nowrap">
+                                <div class="text-nowrap" data-controller="counter-tickets">
                                   <span class="d-flex align-items-center ">
-                                  <a href="#" class="btn-dark btn-sm opacity-4" style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;">-</a>
-                                  <span class="mx-2 text-dark text-center" style="width: 16px;">0
-                                  </span>
-                                  <a href="#" class="btn-primary btn-sm " style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;">+
-                                  </a>
+                                  <a href="#" class="btn-dark btn-sm opacity-4" style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;" data-action="click->counter-tickets#restar">-</a>
+                                  <span class="mx-2 text-dark text-center" style="width: 16px;" data-counter-tickets-target="value">0</span>
+                                  <a href="#" class="btn-primary btn-sm " style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;" data-action="click->counter-tickets#sumar">+</a>
                                   </span>
                                 </div>
                               </div>
                             </div>
-
                           </div>
                         </div>
 
@@ -131,6 +128,18 @@
                     </div>
                   </li>
                 </ul>
+
+              <div class="pb-1 pt-2 px-4">
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" value="true" checked class="custom-control-input" id="form-invoice2">
+    <label class="custom-control-label" for="form-invoice2">
+      Te informamos que tus datos personales serán compartidos con el organizador del evento
+    </label>
+  </div>
+</div>
+
+
+                <%= link_to 'Comprar ahora', new_event_order_path(@event) %>
 
               </div>
 
