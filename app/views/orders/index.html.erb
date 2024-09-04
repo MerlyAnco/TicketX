@@ -2,11 +2,26 @@
   <h1>My Orders</h1>
   <div class="cards">
     <% @orders.each do |order| %>
-    <div class="card">
-      <h5><%= order.event.name %></h5>
-      <%= link_to order_path(order.event_id, order.id) do %>
-        <i class="fa-solid fa-eye text-dark"></i>
-      <% end %>
+    <div class="card-order">
+      <div class="card-order-body">
+        <div class="image">
+          <% if order.event.photo.attached? %>
+            <%= cl_image_tag order.event.photo.key, :alt => order.event.name %>
+          <% else %>
+            <%= image_tag "sinimagen.jpg", height: 160, width: 160, :alt => order.event.name %>
+          <% end %>
+        </div>
+        <div class="card-order-info">
+          <h5>"<%= order.event.name %>"</h5>
+          <p><%= order.event.date %></p>
+          <p><%= order.event.location %></p>
+        </div>
+      </div>
+      <div class="card-order-footer">
+        <%= link_to order_path(order) do %>
+                  <i class="fa-solid fa-eye text-dark text-right"></i>
+                <% end %>
+      </div>
     </div>
     <% end %>
   </div>
