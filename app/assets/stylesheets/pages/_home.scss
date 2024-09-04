@@ -1,1 +1,20 @@
 // Specific CSS for your home-page
+#homePage {
+  #carouselBanner {
+    img {
+      width: 100vw;
+    }
+  }
+  .header {
+    h1 {
+      font-size: 36px;
+    }
+    i {
+      font-size: 34px;
+      color: $primary;
+    }
+  }
+  .container-carousel {
+    margin-top: 24px;
+  }
+}

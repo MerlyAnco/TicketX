@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
   </head>
 
   <body>
@@ -15,5 +16,26 @@
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        new Splide('#carousel', {
+          type: 'loop',
+          autoplay: true,
+          perPage: 3,
+          perMove: 1,
+          gap: '1rem',
+          breakpoints: {
+            640: {
+              perPage: 1,
+            },
+            1024: {
+              perPage: 2,
+            },
+          },
+        }).mount();
+      });
+    </script>
+
   </body>
 </html>

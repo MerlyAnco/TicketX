@@ -1,13 +1,47 @@
 <div class="container">
-  <%= link_to orders_path, :class => "btn btn-dark rounded" do %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
-  <h1>Order</h1>
-  <div class="card">
-    <%= @order.event.name %>
-    <%= @order.event.name %>
-    <p><%= @order.status %></p>
-    <p><%= @order.quantity %></p>
-    <p><%= @order.total_price %></p>
+  <div class="d-flex justify-content-center py-3">
+    <%= link_to events_path, :class => "btn btn-dark rounded-5 m-2" do %>
+      Ver más eventos
+    <% end %>
+    <%= link_to event_path(@order.event), :class => "btn btn-dark  rounded-5 m-2" do %>
+      Ver evento
+    <% end %>
+    <%= link_to orders_path, :class => "btn btn-dark  rounded-5 m-2" do %>
+      Ver mis entradas
+    <% end %>
+  </div>
+  <div class="card-order-details bg-white py-5 px-4 m-3 shadow rounded-2">
+    <h1 class="text-center"><strong>Resumen de compra</strong></h1>
+    <div class="d-flex flex-column">
+      <div class="d-flex">
+        <% if @order.event.photo.attached? %>
+            <%= cl_image_tag @order.event.photo.key, height: 160, width: 160, crop: :fill, :alt => @order.event.name %>
+          <% else %>
+            <%= image_tag "sinimagen.jpg", height: 160, width: 160, :alt => @order.event.name %>
+          <% end %>
+          <div class="row ps-3 align-items-center">
+            <div class="mx-auto">
+              <h4><strong><%= @order.event.name %></strong></h4>
+              <p><%= @order.event.date %></p>
+            </div>
+          </div>
+      </div>
+      <div class="pt-3">
+        <p><strong>Fecha de solicitud: </strong><%= @order.event.created_at %></p>
+      </div>
+    </div>
+    <hr>
+    <div>
+      <h4><strong>Cliente</strong></h4>
+      <p><strong>Nombre: </strong><%= "#{@order.user.first_name.capitalize} #{@order.user.last_name.capitalize}" %></p>
+      <p><strong>Correo: </strong><%= @order.user.email %></p>
+    </div>
+    <hr>
+    <div>
+      <h4><strong>Datos de solicitud</strong></h4>
+      <h5><strong>Entradas</strong></h5>
+      <p>Reserva</p>
+      <p><strong>X<%= @order.quantity %></strong> -------- <strong>S/. <%= @order.total_price %></strong></p>
+    </div>
   </div>
 </div>
