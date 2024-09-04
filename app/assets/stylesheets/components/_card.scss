@@ -1,0 +1,15 @@
+.card {
+  &.card-event {
+    border-radius: 8px;
+    border: none;
+    overflow: hidden;
+    background-color: white;
+    .card-body {
+      padding: 24px;
+      font-size: 18px;
+      .title {
+        height: 42px;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.splide {
+  &__track {
+    max-width: 1180px;
+    margin: auto;
+  }
+  &__slide {
+    img {
+      width: 380px;
+      border-radius: 8px;
+    }
+  }
+  &__arrow {
+    background-color: $primary !important;
+    svg {
+      fill: white !important;
+    }
+  }
+}
