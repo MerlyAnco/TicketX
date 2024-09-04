@@ -2,11 +2,20 @@
   <h1>My Orders</h1>
   <div class="cards">
     <% @orders.each do |order| %>
-    <div class="card">
-      <h5><%= order.event.name %></h5>
-      <%= link_to order_path(order.event_id, order.id) do %>
-        <i class="fa-solid fa-eye text-dark"></i>
-      <% end %>
+    <div class="card-my-event bg-white d-flex flex-column p-2 m-3">
+      <div class="d-flex">
+        <img src="" alt=<%= order.event.name %>>
+        <div class="card-my-event-info p-2">
+          <h5><%= order.event.name %></h5>
+          <p><%= order.event.date %></p>
+          <p><%= order.event.location %></p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <%= link_to order_path(order.event_id, order.id) do %>
+                  <i class="fa-solid fa-eye text-dark text-right"></i>
+                <% end %>
+      </div>
     </div>
     <% end %>
   </div>

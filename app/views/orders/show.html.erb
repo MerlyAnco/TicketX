@@ -1,13 +1,29 @@
 <div class="container">
-  <%= link_to orders_path, :class => "btn btn-dark rounded" do %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
-  <h1>Order</h1>
-  <div class="card">
-    <%= @order.event.name %>
-    <%= @order.event.name %>
-    <p><%= @order.status %></p>
-    <p><%= @order.quantity %></p>
-    <p><%= @order.total_price %></p>
+  <div class="d-flex justify-content-center">
+    <%= link_to events_path, :class => "btn btn-dark rounded-5 m-2" do %>
+      Ver más eventos
+    <% end %>
+    <%= link_to event_path(@order.event), :class => "btn btn-dark  rounded-5 m-2" do %>
+      Ver evento
+    <% end %>
+    <%= link_to orders_path, :class => "btn btn-dark  rounded-5 m-2" do %>
+      Ver mis entradas
+    <% end %>
+  </div>
+  <div class="card bg-white p-2 m-2">
+    <h1 class="text-center">Resumen de compra</h1>
+    <img src="" alt=<%= @order.event.name %>>
+    <h3 class="text-center"><%= @order.event.name %></h3>
+    <p class="text-center"><%= @order.event.date %></p>
+    <p><strong>Fecha de solicitud: </strong><%= @order.event.created_at %></p>
+    <hr>
+    <h3>Cliente</h3>
+    <p><strong>Nombre: </strong><%= "#{@order.user.first_name.capitalize} #{@order.user.last_name.capitalize}" %></p>
+    <p><strong>Correo: </strong><%= @order.user.email %></p>
+    <hr>
+    <h3>Datos de solicitud</h3>
+    <h5>Entradas</h5>
+    <p>Reserva</p>
+    <p><strong>X<%= @order.quantity %></strong> -------- <strong>S/. <%= @order.total_price %></strong></p>
   </div>
 </div>
