@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'events/sells', to: 'events#sells'
   get "events/my_events", to: "events#my_events", as: :my_events
   resources :events do
-    resources :orders, only: %i[new create index show]
+    resources :orders, only: %i[new create]
   end
+  resources :orders, only: %i[index show]
 end
