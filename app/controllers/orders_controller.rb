@@ -17,7 +17,8 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.event = @event
     if @order.save!
-      redirect_to root_path
+      flash[:notice] = 'Successfully apllied!'
+      redirect_to order_path(@order)
     else
       render :new, status: :unprocessable_entity
     end
