@@ -2,7 +2,19 @@
   &-primary {
     color: white !important;
     border-radius: 25px;
-    font-weight: 600;
     padding: 12px 24px;
+  }
+  &-outline {
+    color: $primary !important;
+    border-color: $primary !important;
+    border-radius: 25px;
+    &:hover {
+      background-color: #fafafaa7;
+      color: $gray !important;
+    }
+  }
+
+  &.btn-sm {
+    padding: 10px 24px;
   }
 }
