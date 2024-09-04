@@ -4,7 +4,7 @@
     <% @orders.each do |order| %>
     <div class="card">
       <h5><%= order.event.name %></h5>
-      <%= link_to event_order_path(order.event_id, order.id) do %>
+      <%= link_to order_path(order.event_id, order.id) do %>
         <i class="fa-solid fa-eye text-dark"></i>
       <% end %>
     </div>

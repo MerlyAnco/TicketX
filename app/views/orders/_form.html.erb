@@ -1,5 +1,5 @@
 <%= simple_form_for [event, order] do |f| %>
-<div data-controller="form">
+<div data-controller="form" class="form-group">
   <div>
     <h6>Reserva</h6>
     <p data-form-target = "price"><%= event.ticket_price %></p>
@@ -22,5 +22,5 @@
   <%= f.input :shipping_address %>
   <%= f.input :status %>
   <%= f.button :submit, 'Solicitar', class: 'btn-danger text-white rounded-5 w-100' %>
-  </div>
+</div>
 <% end %>
