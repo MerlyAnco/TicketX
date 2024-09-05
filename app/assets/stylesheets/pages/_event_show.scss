@@ -7,6 +7,30 @@
   color: #1a171b !important
 }
 
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+}
+
 .event-image {
   width: 100%;
   height: auto;
@@ -54,14 +78,20 @@
   border-radius: 50px;
 }
 
-.btn-danger {
+.btn-buy {
   color: #fff;
-  background-color: #dc3545;
+  background-color: #FD1015 ;
   border-color: #dc3545;
   font-size: 1.2rem;  /* Aumenta el tamaño del texto */
   font-weight: bold;  /* Pone el texto en negrita */
   padding: 10px 20px; /* Aumenta el tamaño del botón */
   border-radius: 5px;
+}
+
+.btn-buy:hover {
+  color: #fff;
+  background-color: #e10014; /* Un color más oscuro o un tono similar */
+  border-color: #b32e2b; /* Un color más oscuro para el borde, si es necesario */
 }
 
 /* Estilo del contenedor del checkbox */
