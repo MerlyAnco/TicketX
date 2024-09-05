@@ -38,7 +38,7 @@
               <%= @event.name %>
               </h5>
 
-              <div data-controller="counter-tickets">
+              <div data-controller="counter-tickets" data-counter-tickets-path-value="<%= new_event_order_url(@event) %>">
 
                 <div class="row mb-3">
                   <div class="col-3">
@@ -141,7 +141,7 @@
                   </div>
                 </div>
 
-                <%= link_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-buy btn-block btn-round mt-3" %>
+                <%= link_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-buy btn-block btn-round mt-3", data: {action: "click->counter-tickets#submitTickets"}%>
 
                 <div class="row mt-5">
                   <div class="col-3">
@@ -165,9 +165,3 @@
 
   </div>
 </div>
-
-
-
-  <%= @event.quantity %>
-    <p><%= @event.ticket_price %></p>
-    <br>

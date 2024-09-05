@@ -1,37 +1,18 @@
 <%= simple_form_for [event, order] do |f| %>
 <div data-controller="form" class="form-group">
   <div>
-    <div>
-      <div>
-        <h6>Reserva</h6>
-        <p data-form-target = "price"><%= event.ticket_price %></p>
-      </div>
-      <%= f.input :quantity,
-        input_html: {
-          value: 0,
-          min: 1,
-          max: event.quantity,
-          "data-form-target" => "quantity",
-          "data-action" => "input->form#calculate"
-        } %>
-      </div>
+    <h6>Reserva</h6>
   </div>
   <div class="d-flex justify-content-between">
-    <h6><strong>Total S/.</strong></h6>
+    <h6><strong>Cant. Entradas <%= @quantity %></strong></h6>
+    <h6><strong>Total S/. <%= @total_price %></strong></h6>
     <h6 class="text-end"><strong><span data-form-target = "total"></span></strong></h6>
-    <%= f.input :total_price,
-        label: false,
-        input_html: { value: 0,
-          hidden: true,
-          "data-form-target" => "totalPrice"
-        } %>
+
   </div>
+  <%= f.input :quantity, as: :hidden, input_html: {:value => @quantity} %>
+  <%= f.input :total_price, as: :hidden, input_html: {:value => @total_price} %>
   <%= f.input :shipping_address %>
-  <%= f.input :status,
-  label: false,
-    input_html: { value: 'solicitado',
-      hidden: true,
-    } %>
-  <%= f.button :submit, 'Solicitar', class: 'btn-danger text-white rounded-5 w-100' %>
+  <%= f.input :status %>
+  <%= f.submit %>
 </div>
 <% end %>

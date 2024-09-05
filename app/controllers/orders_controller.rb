@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @quantity = params[:quantity]
+    @total_price = params[:total_price]
     @marker = { lat: @event.latitude, lng: @event.longitude }
   end
 
@@ -18,6 +20,9 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.event = @event
     if @order.save!
+      @event = @order.event
+      @event.quantity -= @order.quantity
+      @event.save!
       flash[:notice] = 'Successfully apllied!'
       redirect_to order_path(@order)
     else
