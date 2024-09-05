@@ -1,0 +1,40 @@
+#createEvent {
+  position: relative;
+  overflow: hidden;
+  background: #f1f6f5;
+    // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: -10px;
+  //   left: -10px;
+  //   right: -10px;
+  //   bottom: -10px;
+  //   background-image: url("https://nowtoronto.com/wp-content/uploads/2024/05/Untitled-design-2024-05-02T153636.136.webp");
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   filter: blur(4px);
+  //   z-index: -1;
+  //   transform: scale(1.1);
+  // }
+  .image {
+    text-align: center;
+      img {
+        filter: drop-shadow(2px 4px 6px black);
+        margin: auto;
+        max-width: 400px;
+      }
+  }
+
+  .form {
+    background: $white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 650px;
+    margin: auto;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    .form-label {
+      font-weight: 600;
+    }
+  }
+}

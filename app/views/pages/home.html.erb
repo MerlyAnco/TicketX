@@ -1,73 +1,97 @@
-  <section id="homePage">
-    <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag "banner1.png"%>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag "banner2.png"%>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag "banner3.jpg"%>
-        </div>
+
+<section id="homePage">
+  <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag "banner1.png"%>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "banner2.png"%>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "banner3.jpg"%>
       </div>
     </div>
-    <div class="container">
-    <div class="mt-4">
-      <div class="header d-flex align-items-center mb-4">
-        <i class="fa-solid fa-star"></i>
-        <h1 class='ms-3 fw-bold'>Eventos</h1>
-      </div>
-        <div class="row my-5">
-          <% @events.each do |event| %>
-            <div class="col-3 d-flex align-items-stretch">
-              <div class="card card-event shadow h-100">
-                <% if event.photo.attached? %>
-                  <%= cl_image_tag event.photo.key, height: 300, width: 450, crop: :fill, class: 'img-fluid' %>
-                <% else %>
-                  <%= image_tag "sinimagen.jpg", height: 300, width: 450, crop: :fill, class: 'img-fluid' %>
-                <% end %>
-                <div class="card-body d-flex flex-column">
-                  <p class="title fw-bolder mb-4"><%= event.name %></p>
-                  <p class='mb-4'><i class="fa-regular fa-calendar me-2"></i><%= event.date %> - 6:00 pm</p>
-                  <div class='mt-auto d-flex justify-content-between align-items-center'>
-                    <p>Desde <span class="fw-bolder">S/ <%= event.ticket_price %></span></p>
-                    <%= link_to "Comprar", event_path(event), class: "btn btn-primary btn-block"%>
-                  </div>
+  </div>
+  <div class="container">
+  <div class="mt-4">
+    <div class="header d-flex align-items-center mb-4">
+      <i class="fa-solid fa-star"></i>
+      <h1 class='ms-3 fw-bold'>Top de eventos</h1>
+    </div>
+      <div class="row mt-4 mb-5">
+        <% @events.each do |event| %>
+          <div class="col-3 d-flex align-items-stretch">
+            <div class="card card-event shadow h-100">
+              <% if event.photo.attached? %>
+                <%= cl_image_tag event.photo.key, height: 300, width: 450, crop: :fill, class: 'img-fluid' %>
+              <% else %>
+                <%= image_tag "sinimagen.jpg", height: 300, width: 450, crop: :fill, class: 'img-fluid' %>
+              <% end %>
+              <div class="card-body d-flex flex-column">
+                <p class="title fw-bolder mb-4"><%= event.name %></p>
+                <p class='mb-4'><i class="fa-regular fa-calendar me-2"></i><%= event.date %> - 6:00 pm</p>
+                <div class='mt-auto d-flex justify-content-between align-items-center'>
+                  <p>Desde <span class="fw-bolder">S/ <%= event.ticket_price %></span></p>
+                  <%= link_to "Comprar", event_path(event), class: "btn btn-primary btn-block"%>
                 </div>
               </div>
             </div>
-          <% end %>
-        </div>
-      <hr/>
-      <div class='container-carousel my-5'>
-        <div class="header d-flex align-items-center mb-4">
-          <i class="fa-solid fa-heart"></i>
-          <h1 class='ms-3 fw-bold'>Tendencias</h1>
-        </div>
-        <div id='carousel' class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <%= image_tag "tendencias1.gif"%>
-              </li>
-              <li class="splide__slide">
-                <%= image_tag "tendencias2.jpg"%>
-              </li>
-              <li class="splide__slide">
-                <%= image_tag "tendencias3.gif"%>
-              </li>
-              <li class="splide__slide">
-                <%= image_tag "tendencias4.gif"%>
-              </li>
-              <li class="splide__slide">
-                <%= image_tag "tendencias5.png"%>
-              </li>
-            </ul>
           </div>
+        <% end %>
+      </div>
+    <hr/>
+    <div class='container-carousel my-5'>
+      <div class="header d-flex align-items-center mb-4">
+        <i class="fa-solid fa-heart"></i>
+        <h1 class='ms-3 fw-bold'>Tendencias</h1>
+      </div>
+      <div id='carousel' class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <%= image_tag "tendencias1.gif"%>
+            </li>
+            <li class="splide__slide">
+              <%= image_tag "tendencias2.jpg"%>
+            </li>
+            <li class="splide__slide">
+              <%= image_tag "tendencias3.gif"%>
+            </li>
+            <li class="splide__slide">
+              <%= image_tag "tendencias4.gif"%>
+            </li>
+            <li class="splide__slide">
+              <%= image_tag "tendencias5.png"%>
+            </li>
+          </ul>
         </div>
       </div>
-      <hr/>
     </div>
-    </div>
-  </section>
+    <hr/>
+  </div>
+  </div>
+</section>
+
+<%if controller_name == "pages" && action_name == "home"%>
+  <script>
+    document.addEventListener('turbo:load', function () {
+      console.log('prueba')
+      new Splide('#carousel', {
+        type: 'loop',
+        autoplay: true,
+        perPage: 3,
+        perMove: 1,
+        gap: '1rem',
+        breakpoints: {
+          640: {
+            perPage: 1,
+          },
+          1024: {
+            perPage: 2,
+          },
+        },
+      }).mount();
+    });
+  </script>
+<%end%>
