@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container mt-5">
   <h1 class='fw-bold'>Todos los eventos</h1>
   <div class="row my-5">
     <% @events.each do |event| %>
-      <div class="col-3 d-flex align-items-stretch">
+      <div class="col-3 d-flex align-items-stretch mb-3">
         <div class="card card-event shadow h-100">
           <% if event.photo.attached? %>
             <%= cl_image_tag event.photo.key, height: 300, width: 450, crop: :fill, class: 'img-fluid' %>

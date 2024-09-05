@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get 'events/sells', to: 'events#sells'
+  get 'events/sells', to: 'events#sells', as: :events_sell
   get "events/my_events", to: "events#my_events", as: :my_events
   resources :events do
     resources :orders, only: %i[new create]
