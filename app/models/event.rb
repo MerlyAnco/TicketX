@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   validates :name, :description, :date, :location, :quantity, :ticket_price, presence: true
-  validates :quantity, numericality: { only_integer: true, greater_than: 0 }
+  validates :quantity, numericality: { only_integer: true}
   validates :ticket_price, numericality: { greater_than: 0 }
   validate :date_cannot_be_in_the_past
 
