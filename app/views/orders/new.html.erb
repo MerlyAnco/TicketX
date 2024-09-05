@@ -11,5 +11,13 @@
   </div>
   <div class="container">
     <p><strong><%= @event.location %></strong></p>
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-location-value="<%= @event.location %>"
+      data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-map-target="map"></div>
+      <div class="leap"></div>
+      <%= @marker %>
   </div>
 </div>

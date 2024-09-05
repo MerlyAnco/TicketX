@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @marker = { lat: @event.latitude, lng: @event.longitude }
   end
 
   def create

@@ -4,7 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["quantity", "price", "total", "totalPrice"];
   connect() {
-    console.dir(this.totalTarget)
   }
 
   calculate(){
