@@ -20,10 +20,10 @@
                 <span class="ms-3 c-pointer"><img src="https://cdn.joinnus.com/files/logo-twitter-v3.svg" alt="" height="25"></span>
                 <a href="whatsapp://send?text=https://www.joinnus.com/events/concerts/lima-aeropajitas-30-anos-63736" target="whatsapp" class="ms-3 d-block d-md-none"><img src="https://cdn.joinnus.com/files/logo-whatsapp-v3.svg" alt="" height="25"></a>
               </div>
-              <h1 class="h3 card-title"><strong><%= @event.name %></strong></h1>
-              <div class="lead mb-3"><%= @event.description %></div>
             </div>
           </div>
+          <h1 class="h3 card-title"><strong><%= @event.name %></strong></h1>
+          <div class="lead mb-3"><%= @event.description %></div>
         </div>
       </div>
     </div>
@@ -133,7 +133,7 @@
                   </div>
                 </div>
 
-                <%= link_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-danger btn-block btn-round mt-3" %>
+                <%= link_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-buy btn-block btn-round mt-3" %>
 
                 <div class="row mt-5">
                   <div class="col-3">
