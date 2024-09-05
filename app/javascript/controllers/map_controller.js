@@ -4,40 +4,42 @@ import mapboxgl from "mapbox-gl";
 // Connects to data-controller="map"
 export default class extends Controller {
   static target = ["map"]
-  static values = { apikey: String, marker: Array, location: String }
+  static values = { apikey: String, marker: String, location: String }
+
   connect() {
-    //mapboxgl.accessToken = this.apikeyValue
-    this.showMap()
+    mapboxgl.accessToken = this.apikeyValue;
+    this.showMap();
   }
 
-  mapMarket(long, lat) {
+  mapMarket(marker) {
     new mapboxgl.Marker()
-    .setLngLat([long, lat])
+    .setLngLat([ marker.lng, marker.lat ])
     .addTo(this.mapTarget);
-    console.dir(this.mapTarget);
   }
 
-  createMap(long, lat) {
-    this.mapTarget = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v9",
-      center: [ long, lat ],
-      zoom: 12
-    })
-    this.mapMarket(long, lat)
+  createMap(marker) {
+
+    if (marker.lng === null && marker.lat === null) {
+      this.mapTarget = new mapboxgl.Map({
+        container: this.element,
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [ -77.0428, -12.0464 ], //Lima
+        zoom: 12
+      })
+    } else {
+      this.mapTarget = new mapboxgl.Map({
+        container: this.element,
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [ marker.lng, marker.lat ],
+        zoom: 15
+      })
+    }
+    this.mapMarket(marker);
   }
 
   showMap() {
-    const apiKey = "pk.eyJ1IjoibnJxcm16IiwiYSI6ImNrb2VtMHFyODBiaXYycXFwNThmdzcwNTEifQ.B1SFYSCKS5OdngEIcmOoXQ";
-    const url = `https://api.mapbox.com/search/geocode/v6/forward?q=${this.locationValue}&access_token=${apiKey}`;
-    fetch(url)
-    .then(response => response.json())
-    .then((data) => {
-      const coordinates = data.features[0].properties.coordinates;
-      const long = coordinates.longitude;
-      const lat = coordinates.latitude;
-      document.querySelector('.leap').innerText = `${long} ${lat}`;
-      this.createMap(long, lat);
-    });
+    const marker = JSON.parse(this.markerValue);
+    console.log(marker);
+    this.createMap(marker);
   }
 }
