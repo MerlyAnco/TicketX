@@ -79,3 +79,4 @@ gem "devise"
 
 gem "dotenv-rails"
 gem "cloudinary"
+gem 'turbo-rails'

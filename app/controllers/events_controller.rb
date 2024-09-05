@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.all.select { |event| event.user_id != current_user.id }
   end
 
   def show
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      redirect_to events_path, notice: 'Evento creado exitosamente.'
+      redirect_to my_events_path, notice: 'Evento creado exitosamente.'
     else
       respond_to do |format|
         format.html { render :new }
@@ -36,17 +36,17 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to events_path, status: :see_other
+    redirect_to my_events_path, status: :see_other
   end
 
   def my_events
-    @my_events = Order.all.map(&:event).select { |event| event.user_id == current_user.id }
+    @my_events = Event.all.select { |event| event.user_id == current_user.id }
   end
 
   def sells
-    # @events = Order.where(status: "vendido").map(&:event).select { |event| event.user_id == current_user.id }
-    id_buyers = Order.where(status: "vendido").map(&:user_id)
-    @events = User.where(id: id_buyers)
+    @sell_events = Order.all.select { |order| order.event.user_id == current_user.id }
+    # id_buyers = Order.where(status: "solicitado").map(&:user_id)
+    # @orders = User.where(id: id_buyers)
   end
 
   private
