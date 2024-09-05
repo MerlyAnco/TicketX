@@ -12,7 +12,18 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :location, label: 'Ubicación', input_html: { class: 'form-control', required: true } %>
+    <%= f.input :location,
+     label: 'Ubicación',
+     input_html: {
+      class: 'form-control',
+       required: true,
+       "data-location-autocomplete-target" => "location",
+       class: "d-none"
+      },
+      wrapper_html: {
+        "data-controller" => "location-autocomplete", "data-location-autocomplete-apikey-value" => ENV["MAPBOX_API_KEY"]
+      }
+    %>
   </div>
 
   <div class="form-group row">
