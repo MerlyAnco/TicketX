@@ -1,5 +1,23 @@
-<div class="container">
-  <h1>Events#new</h1>
-
-  <%= render 'form', event: @event %>
+<div id="createEvent">
+  <div class="container my-5">
+    <div class="row align-items-center">
+      <div class="d-none d-lg-block col-md-5">
+        <div class="image"><%= image_tag "create_ticket.png", class: "img-fluid" %></div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="form">
+          <div class="">
+            <%= link_to events_path do %>
+              <i class="fa-solid fa-arrow-left"></i>
+              Volver a eventos
+            <% end %>
+          </div>
+          <h1 class="my-3 fw-bold">Nuevo evento</h1>
+          <div class="card-form">
+            <%= render 'form', event: @event %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

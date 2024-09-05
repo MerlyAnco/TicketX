@@ -1,16 +1,34 @@
-<%= simple_form_for(@event) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :date %>
-    <%= f.input :location %>
-    <%= f.input :quantity %>
-    <%= f.input :ticket_price %>
-    <%= f.input :photo, as: :file %>
+<%= simple_form_for(@event, html: { class: 'form-horizontal', id: 'eventForm' }) do |f| %>
+  <div class="form-group">
+    <%= f.input :name, label: 'Nombre del evento', input_html: { class: 'form-control', required: true } %>
+  </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, class: "btn btn-primary" %>
-      <%= link_to 'Volver a ver eventos', events_path, class: "btn btn-success" %>
+  <div class="form-group">
+    <%= f.input :description, label: 'Descripción', input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :date, label: 'Fecha', input_html: { class: 'form-control datepicker', required: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :location, label: 'Ubicación', input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <%= f.input :quantity, label: 'Cantidad de boletos', input_html: { class: 'form-control', required: true } %>
     </div>
+    <div class="col-md-6">
+      <%= f.input :ticket_price, label: 'Precio del boleto', input_html: { class: 'form-control', required: true } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :photo, as: :file, label: 'Foto del evento', input_html: { class: 'form-control-file' } %>
+  </div>
+
+  <div class="form-group mt-4">
+    <%= f.button :submit, 'Guardar evento', class: 'btn btn-primary w-100 fw-bolder' %>
   </div>
 <% end %>
