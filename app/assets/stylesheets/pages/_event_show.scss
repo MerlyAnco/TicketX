@@ -15,7 +15,7 @@
 }
 
 .card-title {
-  margin-bottom: .75rem
+  margin-bottom: .75rem;
 }
 
 .btn-primary {
@@ -35,6 +35,34 @@
   font-size: .875rem;
 }
 
+.btn {
+  font-size: 0.9rem;
+}
+
+.btn-red {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-round {
+  border-radius: 50px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  font-size: 1.2rem;  /* Aumenta el tamaño del texto */
+  font-weight: bold;  /* Pone el texto en negrita */
+  padding: 10px 20px; /* Aumenta el tamaño del botón */
+  border-radius: 5px;
+}
 
 /* Estilo del contenedor del checkbox */
 .pb-1.pt-2.px-4 {
