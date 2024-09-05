@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="counter-tickets"
 export default class extends Controller {
-  static targets = ["value", "price", "total", "quantity"]
+  static targets = ["value", "price", "total", "quantity", "max"]
 
   connect() {
     console.log("Hello from our first Stimulus controller");
@@ -11,8 +11,11 @@ export default class extends Controller {
 
   sumar(event) {
     event.preventDefault()
-    let count = this.valueTarget.innerText
-    this.valueTarget.innerText = parseInt(count, 10) + 1
+    console.log(event)
+    let count = parseInt(this.valueTarget.innerText, 10)
+    if (count < this.cant_max()) {
+      this.valueTarget.innerText = count + 1
+    }
     this.total()
   }
 
@@ -24,6 +27,11 @@ export default class extends Controller {
       this.valueTarget.innerText = parseInt(count, 10) - 1
     }
     this.total()
+  }
+
+  cant_max() {
+    const max = parseInt(this.maxTarget.innerText, 0)
+    return max
   }
 
   total() {
