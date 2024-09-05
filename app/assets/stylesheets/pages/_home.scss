@@ -6,11 +6,15 @@
     }
   }
   .header {
-    h1 {
-      font-size: 36px;
+    .title{
+      h1 {
+        font-size: 36px;
+      }
+      i {
+        font-size: 34px;
+      }
     }
     i {
-      font-size: 34px;
       color: $primary;
     }
   }

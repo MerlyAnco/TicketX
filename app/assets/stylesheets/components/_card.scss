@@ -4,6 +4,9 @@
     border: none;
     overflow: hidden;
     background-color: white;
+    img {
+      max-height: 204px;
+    }
     .card-body {
       padding: 24px;
       font-size: 18px;
@@ -11,5 +14,16 @@
         height: 42px;
       }
     }
+  }
+}
+
+.card_sold {
+  padding: 12px;
+  margin-bottom: 24px;
+  .text-truncate-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 256px;
   }
 }

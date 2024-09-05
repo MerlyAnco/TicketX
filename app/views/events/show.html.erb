@@ -20,10 +20,10 @@
                 <span class="ms-3 c-pointer"><img src="https://cdn.joinnus.com/files/logo-twitter-v3.svg" alt="" height="25"></span>
                 <a href="whatsapp://send?text=https://www.joinnus.com/events/concerts/lima-aeropajitas-30-anos-63736" target="whatsapp" class="ms-3 d-block d-md-none"><img src="https://cdn.joinnus.com/files/logo-whatsapp-v3.svg" alt="" height="25"></a>
               </div>
-              <h1 class="h3 card-title"><strong><%= @event.name %></strong></h1>
-              <div class="lead mb-3"><%= @event.description %></div>
             </div>
           </div>
+          <h1 class="h3 card-title"><strong><%= @event.name %></strong></h1>
+          <div class="lead mb-3"><%= @event.description %></div>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
               <%= @event.name %>
               </h5>
 
-              <div>
+              <div data-controller="counter-tickets">
 
                 <div class="row mb-3">
                   <div class="col-3">
@@ -59,18 +59,6 @@
                   </div>
                   <div class="col">
                     <div>04:00 PM a 02:00 AM</div>
-                  </div>
-                </div>
-
-                <div class="row mt-3">
-                  <div class="col-3">
-                    <div class="text-dark">Lugar
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div>
-                      <%= @event.location %>
-                    </div>
                   </div>
                 </div>
 
@@ -106,13 +94,13 @@
 
                             <div class="col text-left">
                               <div>
-                                <b style="font-size: 14px; font-weight: 700; line-height: normal;">S/ <%= @event.ticket_price %></b>
+                                <b style="font-size: 14px; font-weight: 700; line-height: normal;">S/ <span data-counter-tickets-target="price"><%= @event.ticket_price %></span></b>
                               </div>
                             </div>
 
                             <div class="col-auto text-right ">
                               <div>
-                                <div class="text-nowrap" data-controller="counter-tickets">
+                                <div class="text-nowrap">
                                   <span class="d-flex align-items-center ">
                                   <a href="#" class="btn-dark btn-sm opacity-4" style="height: 24px; width: 24px; border-radius: 50%; line-height: 1.2;" data-action="click->counter-tickets#restar">-</a>
                                   <span class="mx-2 text-dark text-center" style="width: 16px;" data-counter-tickets-target="value">0</span>
@@ -129,17 +117,35 @@
                   </li>
                 </ul>
 
-              <div class="pb-1 pt-2 px-4">
-  <div class="custom-control custom-checkbox">
-    <input type="checkbox" value="true" checked class="custom-control-input" id="form-invoice2">
-    <label class="custom-control-label" for="form-invoice2">
-      Te informamos que tus datos personales serán compartidos con el organizador del evento
-    </label>
-  </div>
-</div>
+                <div class="pb-2 pt-2 px-4">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" value="true" checked class="custom-control-input" id="form-invoice2">
+                    <label class="custom-control-label" for="form-invoice2">
+                    Te informamos que tus datos personales serán compartidos con el organizador del evento
+                    </label>
+                  </div>
+                </div>
 
+                <div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <p class="total-label fw-bold">Total (<span data-counter-tickets-target="quantity">0</span>)</p>
+                    <p class="total-amount fw-bold">s/ <span data-counter-tickets-target="total">0.00</span></p>
+                  </div>
+                </div>
 
-                <%= link_to 'Comprar ahora', new_event_order_path(@event) %>
+                <%= link_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-buy btn-block btn-round mt-3" %>
+
+                <div class="row mt-5">
+                  <div class="col-3">
+                    <div class="text-dark"><b>Lugar</b>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div>
+                      <%= @event.location %>
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
