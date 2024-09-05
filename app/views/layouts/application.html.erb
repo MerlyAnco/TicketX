@@ -19,5 +19,8 @@
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+  <% unless controller_name == 'sessions' && (action_name == 'new' || action_name == 'create') || controller_name == 'registrations' && action_name == 'new' %>
+      <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>

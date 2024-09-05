@@ -68,6 +68,14 @@
                   </h5>
                 </div>
 
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <p class="total-label fw-bold">Cant. Max
+                    </p>
+                    <p class="total-amount fw-bold" data-counter-tickets-target="max"><%= @event.quantity %></p>
+                  </div>
+                </div>
+
                 <ul class="list-unstyled m-0 border-form-types">
                   <li>
                     <div class="px-3 py-2 mb-2  bg-light">
@@ -160,6 +168,6 @@
 
 
 
-
+  <%= @event.quantity %>
     <p><%= @event.ticket_price %></p>
     <br>
