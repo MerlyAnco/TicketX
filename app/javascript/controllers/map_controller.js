@@ -39,7 +39,6 @@ export default class extends Controller {
 
   showMap() {
     const marker = JSON.parse(this.markerValue);
-    console.log(marker);
     this.createMap(marker);
   }
 }

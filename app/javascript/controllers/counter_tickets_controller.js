@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["value", "price", "total", "quantity", "max"]
 
   connect() {
-    console.log("Hello from our first Stimulus controller");
     // this.count = 0
   }
 
