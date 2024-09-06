@@ -141,7 +141,8 @@
                   </div>
                 </div>
 
-                <%= link_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-buy btn-block btn-round mt-3", data: {action: "click->counter-tickets#submitTickets"}%>
+
+                <%= button_to 'Comprar ahora', new_event_order_path(@event), class: "btn btn-buy btn-block btn-round mt-3 ", data: {action: "click->counter-tickets#submitTickets", counter_tickets_target: "compra"}, :disabled => true %>
 
                 <div class="row mt-5">
                   <div class="col-3">
