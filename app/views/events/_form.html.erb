@@ -8,11 +8,7 @@
   </div>
 
   <div class="form-group mb-3">
-    <%= f.input :category, { class: 'form-control', required: true } %>
-  </div>
-
-  <div class="form-group">
-    <%= f.input :date, label: 'Fecha', input_html: { class: 'form-control datepicker', required: true } %>
+    <%= f.select :category, @categories, { class: 'form-control', required: true } %>
   </div>
 
   <div class="form-group">
