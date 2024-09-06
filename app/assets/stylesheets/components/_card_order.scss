@@ -32,5 +32,16 @@
   .card-order-footer {
     display: flex;
     justify-content: end;
+
+    i {
+      background-color: black;
+      margin: 5px;
+      border-radius: 3px;
+      color: white;
+      padding: 5px;
+    }
+    i:hover {
+      background-color: #42a692;
+    }
   }
 }

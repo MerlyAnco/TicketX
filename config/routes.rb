@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :events do
     resources :orders, only: %i[new create]
   end
-  resources :orders, only: %i[index show]
+  resources :orders, only: %i[index show destroy]
 end

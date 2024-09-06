@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show update]
+  before_action :set_order, only: %i[show update destroy]
   before_action :set_event, only: %i[create new]
   def index
-    @orders = Order.all
+    @orders = Order.where(user_id: current_user)
   end
 
   def show
@@ -20,11 +20,9 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.event = @event
     if @order.save!
-      @event = @order.event
-      @event.quantity -= @order.quantity
-      @event.save!
-      flash[:notice] = 'Successfully apllied!'
+      flash[:notice] = ''
       redirect_to order_path(@order)
+      @event.update(quantity: @event.quantity - @order.quantity)
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,6 +31,17 @@ class OrdersController < ApplicationController
   def update
     @order.update(order_params)
     redirect_to orders_index_path
+  end
+
+  def destroy
+    if @order
+      flash[:notice] = ''
+      @order.event.update(quantity: @order.event.quantity + @order.quantity)
+      @order.destroy
+      redirect_to orders_path, status: :see_other
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
