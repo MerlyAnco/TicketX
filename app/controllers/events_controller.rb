@@ -4,7 +4,11 @@ class EventsController < ApplicationController
 
   def index
     @categories = Event::CATEGORIES
+    if current_user
     @events = Event.all.select { |event| event.user_id != current_user.id }
+    else
+      @events = Event.all
+    end
   end
 
   def show
