@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="counter-tickets"
 export default class extends Controller {
   static targets = ["value", "price", "total", "quantity", "max"]
+  static values = { path: String }
 
   connect() {
     // this.count = 0
@@ -39,5 +40,13 @@ export default class extends Controller {
     const total = count * price
     this.totalTarget.innerText = total.toFixed(2)
     this.quantityTarget.innerText = count
+  }
+
+  submitTickets(event) {
+    event.preventDefault();
+    const quantity = +this.quantityTarget.innerText;
+    const total_price = +this.totalTarget.innerText;
+    const url = `${this.pathValue}?quantity=${quantity}&total_price=${total_price}`;
+    window.location.href = url;
   }
 }
