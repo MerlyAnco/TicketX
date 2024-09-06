@@ -45,15 +45,19 @@
       </div>
       <div class="d-flex">
         <p><strong>Correo: </strong><%= @order.user.email %></p>&nbsp;
-        <a href="mailto:<%= @order.user.email %>?Subject=<%= @order.event.name %>%20" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-square-envelope"></i>
-        </a>
+        <% if current_user.id != @order.user.id %>
+          <a href="mailto:<%= @order.user.email %>?Subject=<%= @order.event.name %>%20" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-square-envelope"></i>
+          </a>
+        <% end %>
       </div>
       <div class="d-flex">
         <p><strong>Telefono: </strong><%= @order.user.phone_number %></p>&nbsp;
-        <a href="https://api.whatsapp.com/send?phone=+51<%= @order.user.phone_number %>&amp;text=%C2%A1Hola%20<%= @order.user.first_name.capitalize %>!." target="_blank">
-          <i class="fa-brands fa-square-whatsapp"></i>
-        </a>
+        <% if current_user.id != @order.user.id %>
+          <a href="https://api.whatsapp.com/send?phone=+51<%= @order.user.phone_number %>&amp;text=%C2%A1Hola%20<%= @order.user.first_name.capitalize %>!." target="_blank">
+            <i class="fa-brands fa-square-whatsapp"></i>
+          </a>
+        <% end %>
       </div>
     </div>
     <hr>
