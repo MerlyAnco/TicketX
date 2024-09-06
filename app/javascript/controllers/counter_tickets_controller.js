@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="counter-tickets"
 export default class extends Controller {
-  static targets = ["value", "price", "total", "quantity", "max"]
+  static targets = ["value", "price", "total", "quantity", "max", "compra"]
   static values = { path: String }
 
   sumar(event) {
@@ -35,6 +35,12 @@ export default class extends Controller {
     const total = count * price
     this.totalTarget.innerText = total.toFixed(2)
     this.quantityTarget.innerText = count
+
+    if (count > 0) {
+      this.compraTarget.disabled = false
+    } else {
+      this.compraTarget.disabled = true
+    }
   }
 
   submitTickets(event) {
