@@ -2,7 +2,6 @@
   &-primary {
     color: white !important;
     border-radius: 25px;
-    padding: 12px 24px;
   }
   &-outline {
     color: $primary !important;
@@ -16,5 +15,11 @@
 
   &.btn-sm {
     padding: 10px 24px;
+  }
+  &.btn-md {
+    padding: 12px 32px;
+  }
+  &.btn-lg {
+    padding: 18px 48px;
   }
 }
