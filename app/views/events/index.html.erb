@@ -1,8 +1,27 @@
-<div class="container mt-5">
-  <h1 class='fw-bold'>Todos los eventos</h1>
+<div class="container mt-5" data-controller="category-filter">
+  <div id="categoryCarousel" class="splide mb-4">
+    <div class="splide__track">
+      <div class="splide__list">
+        <div class="splide__slide">
+          <div class="category-card p-3" data-action="click->category-filter#filter" data-category-filter-target="category" data-category="all">
+            <%= image_tag "carousel/all.png", height: 24, width: 24 %>
+            <p>Todos</p>
+          </div>
+        </div>
+        <% @categories.each do |category| %>
+          <div class="splide__slide">
+            <div class="category-card p-3" data-action="click->category-filter#filter" data-category-filter-target="category" data-category="<%= category %>">
+              <%= image_tag "carousel/#{category}.png", height: 24, width: 24 %>
+              <p><%= category %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="row my-5">
     <% @events.each do |event| %>
-      <div class="col-3 d-flex align-items-stretch mb-3">
+      <div class="col-3 d-flex align-items-stretch mb-3" data-category-filter-target="event" data-category="<%= event.category %>">
         <div class="card card-event shadow h-100">
           <% if event.photo.attached? %>
             <%= cl_image_tag event.photo.key, height: 300, width: 450, crop: :fill, class: 'img-fluid' %>

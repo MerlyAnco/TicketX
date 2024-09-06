@@ -5,14 +5,8 @@ export default class extends Controller {
   static targets = ["value", "price", "total", "quantity", "max"]
   static values = { path: String }
 
-  connect() {
-    console.log("Hello from our first Stimulus controller");
-    // this.count = 0
-  }
-
   sumar(event) {
     event.preventDefault()
-    console.log(event)
     let count = parseInt(this.valueTarget.innerText, 10)
     if (count < this.cant_max()) {
       this.valueTarget.innerText = count + 1

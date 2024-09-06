@@ -2,11 +2,13 @@ import { Application } from "@hotwired/stimulus"
 import FormController from "./form_controller"
 import CounterTicketsController from "./counter_tickets_controller"
 import HomeController from "./home_controller"
+import CarouselCategoryController from "./carousel_category_controller"
 
 const application = Application.start()
 application.register('form', FormController)
 application.register('counter-tickets', CounterTicketsController)
 application.register('home', HomeController)
+application.register('category-filter', CarouselCategoryController)
 
 // Configure Stimulus development experience
 application.debug = false

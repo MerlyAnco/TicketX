@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
+    @categories = Event::CATEGORIES
     @events = Event.all.select { |event| event.user_id != current_user.id }
   end
 
@@ -53,7 +54,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :date, :location, :quantity, :ticket_price, :photo)
+    params.require(:event).permit(:name, :description, :date, :location, :quantity, :ticket_price, :photo, :category)
   end
 
   def set_event
