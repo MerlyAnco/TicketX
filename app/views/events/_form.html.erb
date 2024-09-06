@@ -1,4 +1,5 @@
 <%= simple_form_for(@event, html: { class: 'form-horizontal', id: 'eventForm' }) do |f| %>
+  <%= f.error_notification %>
   <div class="form-group">
     <%= f.input :name, label: 'Nombre del evento', input_html: { class: 'form-control', required: true } %>
   </div>
