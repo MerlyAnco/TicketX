@@ -1,4 +1,11 @@
 <div class="container">
+  <div id="flash">
+      <% if flash[:notice] %>
+        <div class="notice p-3 mb-2 bg-success rounded text-white">
+          <strong><span><i class="fa-solid fa-check"></i> Orden eliminada.</span></strong>
+        </div>
+      <% end %>
+  </div>
   <h1>My Orders</h1>
   <div class="cards">
     <% @orders.each do |order| %>
@@ -18,9 +25,12 @@
         </div>
       </div>
       <div class="card-order-footer">
+        <%= link_to order_path(order), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
         <%= link_to order_path(order) do %>
-                  <i class="fa-solid fa-eye text-dark text-right"></i>
-                <% end %>
+            <i class="fa-solid fa-eye text-right"></i>
+        <% end %>
       </div>
     </div>
     <% end %>
