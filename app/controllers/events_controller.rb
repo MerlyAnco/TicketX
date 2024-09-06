@@ -17,15 +17,17 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.user = current_user
-    if @event.save
-      redirect_to my_events_path, notice: 'Evento creado exitosamente.'
+    @order = Order.new(order_params)
+    @order.user = current_user
+    @order.event = @event
+    if @order.save!
+      @event = @order.event
+      @event.quantity -= @order.quantity
+      @event.save!
+      flash[:notice] = 'Successfully apllied!'
+      redirect_to order_path(@order)
     else
-      respond_to do |format|
-        format.html { render :new }
-        format.json { render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity }
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 

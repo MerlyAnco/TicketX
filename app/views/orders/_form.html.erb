@@ -1,18 +1,74 @@
 <%= simple_form_for [event, order] do |f| %>
-<div data-controller="form" class="form-group">
-  <div>
-    <h6>Reserva</h6>
-  </div>
-  <div class="d-flex justify-content-between">
-    <h6><strong>Cant. Entradas <%= @quantity %></strong></h6>
-    <h6><strong>Total S/. <%= @total_price %></strong></h6>
-    <h6 class="text-end"><strong><span data-form-target = "total"></span></strong></h6>
+<br>
+<br>
+  <div data-controller="form" class="form-group d-flex flex-column align-items-center p-4" id="formCreateOrder">
+    <div class="card-payment-container d-flex flex-wrap justify-content-between align-items-start">
 
+      <div class="form-details flex-grow-1 me-4">
+        <h4 class="text-color-form-order mb-3">Detalles de la compra</h4>
+
+        <div class="d-flex justify-content-between align-items-center my-3 summary-box p-3 rounded shadow-sm">
+          <div class="summary-item">
+            <i class="fas fa-ticket-alt summary-icon"></i>
+            <h6 class="text-price-order mb-0"><strong>Cant. Entradas:</strong> <%= @quantity %></h6>
+          </div>
+          <div class="summary-item">
+            <i class="fas fa-dollar-sign summary-icon"></i>
+            <h6 class="text-price-order mb-0"><strong>Total:</strong> S/. <%= @total_price %></h6>
+          </div>
+        </div>
+
+        <%= f.input :quantity, as: :hidden, input_html: {:value => @quantity} %>
+        <%= f.input :total_price, as: :hidden, input_html: {:value => @total_price} %>
+        <div class="mb-3">
+          <%= f.input :shipping_address, label: "Dirección de envío", input_html: { class: "form-control" } %>
+        </div>
+
+        <%= f.input :status, as: :hidden, input_html: { value: "Comprado" } %>
+
+        <h5 class="text-color-form-order mb-3">Información de la tarjeta</h5>
+
+        <div class="mb-3">
+          <label for="card-number" class="form-label">Número de tarjeta</label>
+          <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="card-expiry" class="form-label">Expiración</label>
+            <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="card-cvc" class="form-label">CVC</label>
+            <input type="text" id="card-cvc" class="form-control" placeholder="123" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="cardholder-name" class="form-label">Nombre en la tarjeta</label>
+          <input type="text" id="cardholder-name" class="form-control" placeholder="Nombre completo" required>
+        </div>
+
+        <%= f.submit "Completar compra", class: "btn btn-primary w-100 mt-4" %>
+      </div>
+
+      <div class="card-preview-container">
+        <div class="credit-card">
+          <div class="credit-card-chip"></div>
+          <div class="credit-card-number">
+            <span id="cc-number-display">1234 5678 9012 3456</span>
+          </div>
+          <div class="credit-card-name">
+            <span id="cc-name-display">NOMBRE TITULAR</span>
+          </div>
+          <div class="credit-card-expiry">
+            <span id="cc-expiry-display">MM/AA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <%= f.input :quantity, as: :hidden, input_html: {:value => @quantity} %>
-  <%= f.input :total_price, as: :hidden, input_html: {:value => @total_price} %>
-  <%= f.input :shipping_address %>
-  <%= f.input :status, as: :hidden, input_html: {:value => 'solicitado'} %>
-  <%= f.submit %>
-</div>
 <% end %>
+<br>
+<br>

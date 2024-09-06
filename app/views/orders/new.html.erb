@@ -1,21 +1,3 @@
 <div class="container">
-  <div class="container shadow p-3 mb-5 bg-white rounded-2">
-    <h3>"<%= @event.name %>"</h3>
-    <div>
-      <p>Fecha: <span><%= @event.date %></span></p>
-    </div>
-    <div>
-      <h4>Entradas</h4>
       <%= render 'form', event: @event, order: @order %>
-    </div>
-  </div>
-  <div class="container">
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-marker-value="<%= @marker.to_json %>"
-      data-map-location-value="<%= @event.location %>"
-      data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      data-map-target="map">
-    </div>
-  </div>
 </div>
