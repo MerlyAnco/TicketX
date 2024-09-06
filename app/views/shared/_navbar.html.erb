@@ -11,14 +11,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+          <% if !(controller_name == "events" && action_name == "index")%>
+            <li class="nav-item me-3">
+              <%= link_to "Todos los eventos", events_path, class: "btn btn-primary" %>
+            </li>
+          <% end %>
           <% if !(controller_name == "events" && action_name == "new")%>
-          <li class="nav-item mx-3">
+          <li class="nav-item me-3">
             <%= link_to "Crear nuevo evento", new_event_path, class: "btn btn-outline" %>
           </li>
-          <% else %>
-            <li class="nav-item mx-3">
-              <%= link_to "Todos los eventos", events_path, class: "btn btn-outline" %>
-            </li>
           <% end %>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
