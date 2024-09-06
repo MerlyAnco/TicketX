@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    @categories = Event::CATEGORIES
     @event = Event.new
   end
 
