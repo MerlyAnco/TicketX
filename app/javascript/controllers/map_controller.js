@@ -15,17 +15,12 @@ export default class extends Controller {
     new mapboxgl.Marker()
     .setLngLat([ marker.lng, marker.lat ])
     .addTo(this.mapTarget);
+    this.locationTarget.innerContent = this.locationValue;
   }
 
   createMap(marker) {
-
     if (marker.lng === null && marker.lat === null) {
-      this.mapTarget = new mapboxgl.Map({
-        container: this.element,
-        style: "mapbox://styles/mapbox/streets-v12",
-        center: [ -77.0428, -12.0464 ], //Lima
-        zoom: 12
-      })
+      this.mapTarget.innerText = ''
     } else {
       this.mapTarget = new mapboxgl.Map({
         container: this.element,
