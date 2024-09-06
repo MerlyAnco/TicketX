@@ -1,13 +1,13 @@
 <%= simple_form_for [event, order] do |f| %>
+<%= f.error_notification %>
 <br>
-<br>
-  <div data-controller="form" class="form-group d-flex flex-column align-items-center p-4" id="formCreateOrder">
-    <div class="card-payment-container d-flex flex-wrap justify-content-between align-items-start">
+  <div class="form-group d-flex flex-column align-items-center p-4" id="formCreateOrder">
+    <div class="card-payment-container d-flex flex-wrap justify-content-between align-items-start" data-controller="payment">
 
       <div class="form-details flex-grow-1 me-4">
         <h4 class="text-color-form-order mb-3">Detalles de la compra</h4>
 
-        <div class="d-flex justify-content-between align-items-center my-3 summary-box p-3 rounded shadow-sm">
+        <div class="d-flex justify-content-between align-items-center my-3 summary-box p-3 rounded shadow-sm" data-controller="form">
           <div class="summary-item">
             <i class="fas fa-ticket-alt summary-icon"></i>
             <h6 class="text-price-order mb-0"><strong>Cant. Entradas:</strong> <%= @quantity %></h6>
@@ -20,8 +20,19 @@
 
         <%= f.input :quantity, as: :hidden, input_html: {:value => @quantity} %>
         <%= f.input :total_price, as: :hidden, input_html: {:value => @total_price} %>
+
         <div class="mb-3">
-          <%= f.input :shipping_address, label: "Dirección de envío", input_html: { class: "form-control" } %>
+          <%= f.input :shipping_address,
+           label: "Dirección de envío",
+           input_html: {
+             class: "form-control",
+             "data-location-autocomplete-target" => "location",
+             class: "d-none"
+            },
+              wrapper_html: {
+              "data-controller" => "location-autocomplete", "data-location-autocomplete-apikey-value" => ENV["MAPBOX_API_KEY"]
+            }
+          %>
         </div>
 
         <%= f.input :status, as: :hidden, input_html: { value: "Comprado" } %>
@@ -30,17 +41,17 @@
 
         <div class="mb-3">
           <label for="card-number" class="form-label">Número de tarjeta</label>
-          <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" required>
+          <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" data-payment-target="card" data-action="input->payment#cardCheck" pattern="^(?:\d{4}[-\s]?){3}\d{4}|\d{15,16}$" required>
         </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="card-expiry" class="form-label">Expiración</label>
-            <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA" required>
+            <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA" data-payment-target="expDate" data-action="input->payment#expDateCheck" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" required>
           </div>
           <div class="col-md-6 mb-3">
             <label for="card-cvc" class="form-label">CVC</label>
-            <input type="text" id="card-cvc" class="form-control" placeholder="123" required>
+            <input type="text" id="card-cvc" class="form-control" placeholder="123" data-payment-target="cvc" data-action="input->payment#cvcCheck" pattern="^\d{3}$" required>
           </div>
         </div>
 
@@ -70,5 +81,4 @@
     </div>
   </div>
 <% end %>
-<br>
 <br>
