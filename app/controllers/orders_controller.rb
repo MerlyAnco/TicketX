@@ -20,13 +20,16 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.event = @event
     if @order.save!
-      flash[:notice] = ''
+      @event = @order.event
+      @event.quantity -= @order.quantity
+      @event.save!
+      flash[:notice] = 'Successfully apllied!'
       redirect_to order_path(@order)
-      @event.update(quantity: @event.quantity - @order.quantity)
     else
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def update
     @order.update(order_params)
