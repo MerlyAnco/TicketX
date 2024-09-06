@@ -4,6 +4,7 @@ export default class extends Controller {
   static targets = ["category", "event"]
 
   connect() {
+    console.log('connecting')
     new Splide('#categoryCarousel', {
       type: 'loop',
       perPage: 5,

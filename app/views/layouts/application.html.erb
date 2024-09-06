@@ -15,10 +15,12 @@
     <%= render "shared/navbar" %>
     <%= yield %>
     <p class="notice"><%= notice %></p>
+    <div data-controller="sweetalert" data-sweetalert-notice="<%= notice %>"></div>
     <p class="alert"><%= alert %></p>
     <% unless controller_name == 'sessions' && (action_name == 'new' || action_name == 'create') || controller_name == 'registrations' && action_name == 'new' %>
       <%= render "shared/footer" %>
     <% end %>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
