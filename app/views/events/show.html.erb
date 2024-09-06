@@ -72,7 +72,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-3">
                     <p class="total-label fw-bold">Cant. Max
                     </p>
-                    <p class="total-amount fw-bold" data-counter-tickets-target="max"><%= @event.quantity %></p>
+                    <p class="total-amount fw-bold <%= @event.quantity == 0 ? 'text-danger fst-italic' : '' %>" data-counter-tickets-target="max"><%= @event.quantity > 0 ? @event.quantity : 'Agotado' %></p>
                   </div>
                 </div>
 
