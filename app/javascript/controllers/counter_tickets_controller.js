@@ -6,7 +6,6 @@ export default class extends Controller {
   static values = { path: String }
 
   connect() {
-    console.log("Hello from our first Stimulus controller");
     // this.count = 0
   }
 
