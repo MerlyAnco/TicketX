@@ -30,6 +30,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @categories = Event::CATEGORIES
   end
 
   def update
