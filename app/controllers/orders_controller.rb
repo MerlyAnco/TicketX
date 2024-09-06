@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @quantity = params[:quantity]
+    @total_price = params[:total_price]
     @marker = { lat: @event.latitude, lng: @event.longitude }
   end
 
