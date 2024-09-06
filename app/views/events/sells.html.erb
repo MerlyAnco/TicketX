@@ -4,22 +4,20 @@
       <h1 class='fw-bold mb-3'>Mis ventas</h1>
       <div class="row">
         <% @sell_events.each do |event| %>
-          <div class='col-4'>
-            <div class='card_sold shadow-sm rounded d-flex'>
+          <div class='card_sold shadow-sm rounded d-flex'>
+            <div>
+              <% if event.event.photo.attached? %>
+                <%= cl_image_tag event.event.photo.key, height: 70, width: 120, crop: :fill, class: 'rounded-3' %>
+              <% else %>
+                <%= image_tag "sinimagen.jpg", height: 70, width: 120, crop: :fill, class: 'rounded-3' %>
+              <% end %>
+              <%= link_to 'Ver detalle', order_path(event), class:'d-inline-block mt-2 fw-bolder' %>
+            </div>
+            <div class="d-flex flex-column ms-2 justify-content-around">
+              <p class="fw-bolder"><%= event.event.name %></p>
               <div>
-                <% if event.event.photo.attached? %>
-                  <%= cl_image_tag event.event.photo.key, height: 70, width: 120, crop: :fill, class: 'rounded-3' %>
-                <% else %>
-                  <%= image_tag "sinimagen.jpg", height: 70, width: 120, crop: :fill, class: 'rounded-3' %>
-                <% end %>
-                <%= link_to 'Ver detalle', order_path(event), class:'d-inline-block mt-2 fw-bolder' %>
-              </div>
-              <div class="d-flex flex-column ms-2 justify-content-around">
-                <p class="fw-bolder"><%= event.event.name %></p>
-                <div>
-                  <p><%= event.event.date %></p>
-                  <p class="text-truncate-description"><%= event.event.description %></p>
-                </div>
+                <p><%= event.event.date %></p>
+                <p class="text-truncate-description"><%= event.event.description %></p>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 
-<section id="homePage">
+<section id="homePage" data-controller="home">
   <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -78,26 +78,3 @@
   </div>
   </div>
 </section>
-
-<%if controller_name == "pages" && action_name == "home"%>
-  <script>
-    document.addEventListener('turbo:load', function () {
-      console.log('prueba')
-      new Splide('#carousel', {
-        type: 'loop',
-        autoplay: true,
-        perPage: 3,
-        perMove: 1,
-        gap: '1rem',
-        breakpoints: {
-          640: {
-            perPage: 1,
-          },
-          1024: {
-            perPage: 2,
-          },
-        },
-      }).mount();
-    });
-  </script>
-<%end%>

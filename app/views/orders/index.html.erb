@@ -1,8 +1,15 @@
-<div class="container">
-  <h1>My Orders</h1>
+<div class="container mt-5">
+  <div id="flash">
+      <% if flash[:notice] %>
+        <div class="notice p-3 mb-2 bg-success rounded text-white">
+          <strong><span><i class="fa-solid fa-check"></i> Orden eliminada.</span></strong>
+        </div>
+      <% end %>
+  </div>
+  <h1 class='fw-bold mb-3'>Mis compras</h1>
   <div class="cards">
     <% @orders.each do |order| %>
-    <div class="card-order">
+    <div class="card-order shadow-sm d-flex justify-content-between">
       <div class="card-order-body">
         <div class="image">
           <% if order.event.photo.attached? %>
@@ -10,17 +17,22 @@
           <% else %>
             <%= image_tag "sinimagen.jpg", height: 160, width: 160, :alt => order.event.name %>
           <% end %>
+          <div class="card-order-footer">
+            <%= link_to order_path(order) do %>
+                <i class="fa-solid fa-eye text-right me-2"></i>
+            <% end %>
+            <%= link_to order_path(order), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </div>
         </div>
         <div class="card-order-info">
-          <h5>"<%= order.event.name %>"</h5>
-          <p><%= order.event.date %></p>
-          <p><%= order.event.location %></p>
+          <p class="fw-bolder"><%= order.event.name %></p>
+          <div>
+            <p class="mb-2"><%= order.event.date %> - 6:00 pm</p>
+            <small class="fw-bolder"><%= order.event.location %></small>
+          </div>
         </div>
-      </div>
-      <div class="card-order-footer">
-        <%= link_to order_path(order) do %>
-                  <i class="fa-solid fa-eye text-dark text-right"></i>
-                <% end %>
       </div>
     </div>
     <% end %>
