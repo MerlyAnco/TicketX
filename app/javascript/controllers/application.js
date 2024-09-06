@@ -5,7 +5,6 @@ import HomeController from "./home_controller"
 import CarouselCategoryController from "./carousel_category_controller"
 import SweetalertController from "./sweetalert_controller"
 import PaymentController from "./payment_controller"
-import SweetalertController from "./sweetalert_controller"
 
 const application = Application.start()
 application.register('form', FormController)
@@ -14,8 +13,6 @@ application.register('home', HomeController)
 application.register('category-filter', CarouselCategoryController)
 application.register('sweetalert', SweetalertController)
 application.register('payment', PaymentController)
-
-application.register('sweetalert', SweetalertController)
 
 // Configure Stimulus development experience
 application.debug = false
