@@ -12,7 +12,7 @@
   <%= f.input :quantity, as: :hidden, input_html: {:value => @quantity} %>
   <%= f.input :total_price, as: :hidden, input_html: {:value => @total_price} %>
   <%= f.input :shipping_address %>
-  <%= f.input :status %>
+  <%= f.input :status, as: :hidden, input_html: {:value => 'solicitado'} %>
   <%= f.submit %>
 </div>
 <% end %>
